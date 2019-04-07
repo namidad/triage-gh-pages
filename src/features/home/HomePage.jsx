@@ -66,7 +66,7 @@ class HomePage extends Component {
                   <h1 className="ui inverted stackable header">
                     <img
                       className="ui image massive"
-                      src="/assets/logo.png"
+                      src="../../../public/assets/logo.png"
                       alt="logo"
                     />
                     <div className="content">Triage</div>

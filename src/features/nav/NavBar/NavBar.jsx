@@ -12,7 +12,7 @@ class NavBar extends Component {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item as={Link} to='/' header>
-            <img src="/assets/logo.png" alt="logo" />
+            <img src="../../../public/assets/logo.png" alt="logo" />
             Triage
           </Menu.Item>
           
