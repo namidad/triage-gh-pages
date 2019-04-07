@@ -11,7 +11,7 @@ class NavBar extends Component {
     return (
       <Menu inverted fixed="top">
         <Container>
-          <Menu.Item as={Link} to='/' header>
+          <Menu.Item as={Link} to='/triage-gh-pages/' header>
             <img src="../../../public/assets/logo.png" alt="logo" />
             Triage
           </Menu.Item>
