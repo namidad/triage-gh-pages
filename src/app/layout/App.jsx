@@ -14,7 +14,7 @@ class App extends Component {
         </Switch>
 
         <Route
-        path="/(.+)"
+        path="/triage-gh-pages/(.+)"
         render={() => (
           <div>
           <NavBar />

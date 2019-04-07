@@ -3,8 +3,6 @@ import { Menu, Dropdown } from 'semantic-ui-react'
 
 const SignedInMenu = ({signOut}) => {
 
-
-
     return(
             <Menu.Item position="right">
             <Dropdown.Item text="Przelacz" icon="download" />
