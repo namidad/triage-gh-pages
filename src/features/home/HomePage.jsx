@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Form, Grid, Button, Header, Segment, Message } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../app/reducers/userActions'
-
+import logo from "./logo.png"
 
 class HomePage extends Component {
 
@@ -66,7 +66,7 @@ class HomePage extends Component {
                   <h1 className="ui inverted stackable header">
                     <img
                       className="ui image massive"
-                      src="../../../public/assets/logo.png"
+                      src={logo}
                       alt="logo"
                     />
                     <div className="content">Triage</div>

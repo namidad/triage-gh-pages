@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Menu, Container} from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import SignedInMenu from "../Menus/SignedInMenu";
-
+import logo from "./logo.png"
 import { connect } from 'react-redux'
 
 class NavBar extends Component {
@@ -12,7 +12,7 @@ class NavBar extends Component {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item as={Link} to='/triage-gh-pages/' header>
-            <img src="../../../public/assets/logo.png" alt="logo" />
+            <img src={logo} alt="logo" />
             Triage
           </Menu.Item>
           
