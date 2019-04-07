@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/triage-gh-pages/precache-manifest.a1b56acd044f0c232d42533589b0cc0b.js"
+  "/triage-gh-pages/precache-manifest.ec5151da2e3cc16cdb6ad95ac4a80e97.js"
 );
 
 workbox.clientsClaim();
