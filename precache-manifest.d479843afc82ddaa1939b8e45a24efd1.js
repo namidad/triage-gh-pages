@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "962a1bf31c081691065fe333d9fa8105",
-    "url": "/triage-gh-pages/static/media/icons.962a1bf3.svg"
+    "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
+    "url": "/triage-gh-pages/static/media/outline-icons.ef60a4f6.woff"
   },
   {
-    "revision": "a2c92dc660e526839a78",
+    "revision": "5a413745256c2a3f0eb1",
     "url": "/triage-gh-pages/static/css/main.3d52fcb5.chunk.css"
   },
   {
@@ -20,12 +20,16 @@ self.__precacheManifest = [
     "url": "/triage-gh-pages/static/js/2.4945262e.chunk.js"
   },
   {
-    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
-    "url": "/triage-gh-pages/static/media/icons.8e3c7f55.eot"
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/triage-gh-pages/static/media/flags.9c74e172.png"
   },
   {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
     "url": "/triage-gh-pages/static/media/icons.0ab54153.woff2"
+  },
+  {
+    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
+    "url": "/triage-gh-pages/static/media/icons.8e3c7f55.eot"
   },
   {
     "revision": "faff92145777a3cbaf8e7367b4807987",
@@ -40,16 +44,16 @@ self.__precacheManifest = [
     "url": "/triage-gh-pages/static/media/outline-icons.701ae6ab.eot"
   },
   {
+    "revision": "5a413745256c2a3f0eb1",
+    "url": "/triage-gh-pages/static/js/main.86d4dcdb.chunk.js"
+  },
+  {
     "revision": "cd6c777f1945164224dee082abaea03a",
     "url": "/triage-gh-pages/static/media/outline-icons.cd6c777f.woff2"
   },
   {
-    "revision": "a2c92dc660e526839a78",
-    "url": "/triage-gh-pages/static/js/main.be22d367.chunk.js"
-  },
-  {
-    "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
-    "url": "/triage-gh-pages/static/media/outline-icons.ef60a4f6.woff"
+    "revision": "962a1bf31c081691065fe333d9fa8105",
+    "url": "/triage-gh-pages/static/media/icons.962a1bf3.svg"
   },
   {
     "revision": "ad97afd3337e8cda302d10ff5a4026b8",
@@ -76,15 +80,11 @@ self.__precacheManifest = [
     "url": "/triage-gh-pages/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/triage-gh-pages/static/media/flags.9c74e172.png"
-  },
-  {
     "revision": "74b7a7204f76b81d03b9",
     "url": "/triage-gh-pages/static/css/2.e41417cf.chunk.css"
   },
   {
-    "revision": "e4069527a3db8aeedd73409bc3babd30",
+    "revision": "51e034e6525d47bc0c1cc0a896145213",
     "url": "/triage-gh-pages/index.html"
   }
 ];
