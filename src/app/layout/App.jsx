@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/' component={HomePage}/>
+          <Route exact path='/triage-gh-pages/' component={HomePage}/>
         </Switch>
 
         <Route
@@ -20,7 +20,7 @@ class App extends Component {
           <NavBar />
           <Container className="main">
             <Switch>
-              <Route path='/triage' component={TriageDetailedPage}/>
+              <Route path='/triage-gh-pages/triage' component={TriageDetailedPage}/>
             </Switch>
           </Container>
           </div>
