@@ -129,7 +129,7 @@ export class TriageDashboard extends Component {
     }
 
   }
-}
+} 
 
 const mapStateToProps = (store) => {
   return {
