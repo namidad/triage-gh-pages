@@ -3,6 +3,7 @@ import { Form, Grid, Button, Header, Segment, Message } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../app/reducers/userActions'
 import logo from "./logo.png"
+import axios from 'axios';
 
 class HomePage extends Component {
 
@@ -16,7 +17,21 @@ class HomePage extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    this.props.history.push('/triage-gh-pages/triage');
+    const body={
+      username: this.state.login,
+      password: this.state.password
+    }
+
+    axios.post('http://localhost:4000/login',body)
+      .then(res=>{
+        if(res.data){
+          this.props.history.push('/triage-gh-pages/triage-method');
+        }
+      }).catch(err=>console.log(err));
+
+    
+
+    //this.props.history.push('/triage-gh-pages/triage-method');
 
     // let check=false;
     // this.state.users.forEach(user=>{

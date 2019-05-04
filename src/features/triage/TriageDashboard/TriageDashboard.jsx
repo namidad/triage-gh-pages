@@ -4,12 +4,14 @@ import CustomMarker from './CustomMarker'
 import { Checkbox } from 'semantic-ui-react'
 import mapStyles from './mapStyles';
 import { connect } from 'react-redux'
+import axios from 'axios';
+import { addVictims } from '../../../app/reducers/victimsActions'
 
 
 export class TriageDashboard extends Component {
 
   state = {
-    id: 0,
+    _id: 0,
     color: "",
     lat: 0,
     lng: 0,
@@ -22,22 +24,31 @@ export class TriageDashboard extends Component {
   }
 
   componentWillMount(){
-    this.setState({
-      id: this.state.victims[0].id,
-      color: this.state.victims[0].color,
-      lat: this.state.victims[0].lat,
-      lng: this.state.victims[0].lng,
-      injury: this.state.victims[0].injury,
-    })
+    axios.get('http://localhost:4000/getVictims')
+      .then(res=>{
+        for(let i=0; i<res.data.length;i++){
+          res.data[i]._id=i;
+          console.log(res.data[i]);
+        }
+        this.props.addVictims(res.data);
+        this.setState({
+          victims: res.data,
+          _id: res.data[0]._id,
+          color: res.data[0].color,
+         lat: res.data[0].lat,
+         lng: res.data[0].lng,
+         injury: res.data[0].injury,
+        })
+      }).catch(err=>console.log(err));
   }
 
   handleChangeId=(e)=>{
         this.setState({
-          id: e.id,
-          color: this.state.victims[e.id].color,
-          lat: this.state.victims[e.id].lat,
-          lng: this.state.victims[e.id].lng,
-          injury: this.state.victims[e.id].injury,
+          _id: e._id,
+          color: this.state.victims[e._id].color,
+          lat: this.state.victims[e._id].lat,
+          lng: this.state.victims[e._id].lng,
+          injury: this.state.victims[e._id].injury,
         })
   }
 
@@ -59,23 +70,22 @@ export class TriageDashboard extends Component {
   }
 
   render() {
-
     let markers = this.state.victims.map(vic=>{
       if(vic.color==="green"){
         if(this.state.green){
-          return <CustomMarker color={vic.color} key={vic.id} lat={vic.lat} lng={vic.lng}  id={vic.id} onClick={this.handleChangeId}/>
+          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
         }
       } else if (vic.color==="red"){
         if(this.state.red){
-          return <CustomMarker color={vic.color} key={vic.id} lat={vic.lat} lng={vic.lng}  id={vic.id} onClick={this.handleChangeId}/>
+          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
         }
       } else if (vic.color==="black") {
         if(this.state.black){
-          return <CustomMarker color={vic.color} key={vic.id} lat={vic.lat} lng={vic.lng}  id={vic.id} onClick={this.handleChangeId}/>
+          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
         }
       } else if (vic.color==="yellow") {
         if(this.state.yellow){
-          return <CustomMarker color={vic.color} key={vic.id} lat={vic.lat} lng={vic.lng}  id={vic.id} onClick={this.handleChangeId}/>
+          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
         }
       }
 
@@ -107,7 +117,7 @@ export class TriageDashboard extends Component {
 
           <div className="injuredForm">
 
-            <h2>Poszkodowany nr: {this.state.id}</h2>
+            <h2>Poszkodowany nr: {this.state._id}</h2>
             <h3>Kolor opaski: {this.state.color}</h3>
             <h3>Lat: {this.state.lat}</h3>
             <h3>Lng: {this.state.lng}</h3>
@@ -121,14 +131,20 @@ export class TriageDashboard extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (store) => {
   return {
-    logged: state.user.isLogged,
-    victims: state.victims.victims,
+    logged: store.user.isLogged,
+    victims: store.victims.victims,
+  }
+}
+
+const mapDispatchToState = (dispatch) => {
+  return {
+    addVictims: (victims) => dispatch(addVictims(victims))
   }
 }
 
 
-export default connect(mapStateToProps)(GoogleApiWrapper({
+export default connect(mapStateToProps, mapDispatchToState)(GoogleApiWrapper({
   apiKey: ("AIzaSyCblUbnkuTFlV_z1Uz0L5zowqVds8iIim0")
 })(TriageDashboard))
