@@ -38,7 +38,6 @@ export class TriageMethod extends Component {
                 <Button onClick={this.handleStartClick} content='Start' />
                 <Button onClick={this.handleJumpStartClick} content='JumpStart' />
             </div>
-            
         </div>
     );
     }

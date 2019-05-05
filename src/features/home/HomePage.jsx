@@ -105,7 +105,7 @@ class HomePage extends Component {
       )
     } else
       {
-      this.props.history.push('/videos');
+      this.props.history.push('/triage-gh-pages/triage-method');
       return null;
     }
     }
@@ -113,9 +113,9 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = (store) => {
-  // return {
-  //   isLogged: store.user.isLogged
-  // }
+  return {
+    isLogged: store.user.isLogged
+  }
 }
 
 const mapDispatchToProps = (dispatch)=>{

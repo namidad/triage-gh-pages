@@ -11,11 +11,6 @@ import { addVictims } from '../../../app/reducers/victimsActions'
 export class TriageDashboard extends Component {
 
   state = {
-    _id: 0,
-    color: "",
-    lat: 0,
-    lng: 0,
-    injury: "",
     green: true,
     yellow: true,
     red: true,
@@ -28,28 +23,17 @@ export class TriageDashboard extends Component {
       .then(res=>{
         for(let i=0; i<res.data.length;i++){
           res.data[i]._id=i;
-          console.log(res.data[i]);
         }
         this.props.addVictims(res.data);
         this.setState({
           victims: res.data,
-          _id: res.data[0]._id,
-          color: res.data[0].color,
-         lat: res.data[0].lat,
-         lng: res.data[0].lng,
-         injury: res.data[0].injury,
         })
       }).catch(err=>console.log(err));
   }
 
   handleChangeId=(e)=>{
-        this.setState({
-          _id: e._id,
-          color: this.state.victims[e._id].color,
-          lat: this.state.victims[e._id].lat,
-          lng: this.state.victims[e._id].lng,
-          injury: this.state.victims[e._id].injury,
-        })
+    const path = '/triage-gh-pages/victim/'+e._id;
+    this.props.history.push(path);
   }
 
   handleChecked = (e) => {
@@ -95,34 +79,29 @@ export class TriageDashboard extends Component {
     if(this.props.logged){
       return (
         <div className="mapContainer">
-          <div className="injuredMap">
+        <div>
           <Checkbox onChange={ e => this.handleChecked("green") }  label='Show green band' defaultChecked/>
           <Checkbox onChange={ e => this.handleChecked("yellow") } value="yellow" label='Show yellow band' defaultChecked/>
           <Checkbox onChange={ e => this.handleChecked("red") } value="red" label='Show red band' defaultChecked/>
           <Checkbox onChange={ e => this.handleChecked("black") } value="black" label='Show black band' defaultChecked/>
-            <Map
+        </div>
+
+          <div className="map">
+          <Map
                 google={this.props.google}
-                style={{width: '40%', height: '80%'}}
+                style={{width: '90%', height: '60%'}}
                 styles={mapStyles}
 
                 initialCenter={{
-                  lat: 51.108197,
-                  lng: 17.0326689
+                  lat: 51.109000,
+                  lng: 17.032737
                 }}
                 zoom={18}
               >
                 {markers}
             </Map>
           </div>
-
-          <div className="injuredForm">
-
-            <h2>Poszkodowany nr: {this.state._id}</h2>
-            <h3>Kolor opaski: {this.state.color}</h3>
-            <h3>Lat: {this.state.lat}</h3>
-            <h3>Lng: {this.state.lng}</h3>
-            <h3>Obrazenia: {this.state.injury}</h3>
-           </div>
+            
         </div>
 
       )
