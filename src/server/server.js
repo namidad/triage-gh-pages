@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 
 mongoose.connect('mongodb+srv://namidad:Namidad12@triage-su1vl.gcp.mongodb.net/triage?retryWrites=true').then(()=>{});
 
-app.listen(4000, ()=>console.log('server started on port '));
+app.listen(4000, ()=>console.log('server started on port 4000.'));
 
 app.post('/method', (req, res, next) => {
     Method.findById(req.body.id).then((

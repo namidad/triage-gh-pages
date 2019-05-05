@@ -25,38 +25,20 @@ class HomePage extends Component {
     axios.post('http://localhost:4000/login',body)
       .then(res=>{
         if(res.data){
+          let login = {
+            logged: true,
+          };
+            this.props.loginUser(login);
+            this.setState({
+              error:false,
+            })
           this.props.history.push('/triage-gh-pages/triage-method');
+        } else {
+          this.setState({
+            error:true,
+          })
         }
       }).catch(err=>console.log(err));
-
-    
-
-    //this.props.history.push('/triage-gh-pages/triage-method');
-
-    // let check=false;
-    // this.state.users.forEach(user=>{
-    //     if(user.Login === this.state.login
-    //       && user.Password === this.state.password ){
-    //         check=true;
-    //         this.setState({
-    //           logged: true,
-    //         })
-    //         let loggedUser = user;
-    //         loggedUser.logged=true;
-    //         this.props.loginUser(loggedUser);
-    //         this.props.history.push('/videos');
-    //       }
-    // })
-
-    // if(!check){
-    //   this.setState({
-    //     error: true,
-    //   })
-    // } else {
-    //   this.setState({
-    //     error: false,
-    //   })
-    // }
   }
 
   handleLoginChange= (e)=>{
