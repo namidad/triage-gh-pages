@@ -120,12 +120,6 @@ body {
   padding-bottom: 10px;
 }
 
-.map div:first-of-type {
-  width: 87% !important;
-  height: 80% !important;
-}
-
-
 
 .chooseMethod {
   width: 100%;

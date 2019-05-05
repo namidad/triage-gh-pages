@@ -89,7 +89,7 @@ export class TriageDashboard extends Component {
           <div className="map">
           <Map
                 google={this.props.google}
-                style={{width: '90%', height: '60%'}}
+                style={{width: '80%', height: '60%'}}
                 styles={mapStyles}
 
                 initialCenter={{
