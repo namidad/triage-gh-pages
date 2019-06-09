@@ -91,7 +91,7 @@ export class TriageVictim extends Component {
                                         },
                                         scaleLabel: {
                                             display: true,
-                                            labelString: 'Tętno'
+                                            labelString: 'Puls'
                                         }
                                     }],
                                     xAxes: [{
