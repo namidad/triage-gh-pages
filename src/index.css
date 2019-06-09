@@ -133,27 +133,22 @@ body {
 .victimDetailed {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  margin-top: 25px;
-  margin-bottom: 50px;
+  height: 100%;
 }
 
 .victimContainer {
-  width: 80%;
   height: 70%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding-bottom: 10px;
 }
 .victimLine {
-  width: 60%;
-  height: 80%;
   min-width: 500px;
-  padding-bottom: 25px;
 }
 
 .injuredForm {
@@ -162,4 +157,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.raports {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

@@ -5,18 +5,25 @@ import SignedInMenu from "../Menus/SignedInMenu";
 import logo from "./logo.png"
 import { connect } from 'react-redux'
 
+
 class NavBar extends Component {
+
+  goToMap = (e) =>  {
+    e.preventDefault();
+    this.props.history.push('/triage');
+  }
+
   render() {
 
     return (
       <Menu inverted fixed="top">
         <Container>
-          <Menu.Item as={Link} to='/triage-gh-pages/' header>
+          <Menu.Item as={Link} to='/' header>
             <img src={logo} alt="logo" />
             Triage
           </Menu.Item>
           
-          <SignedInMenu signOut={this.handleSignOut} />
+          <SignedInMenu goToMap={this.goToMap} />
         </Container>
       </Menu>
     );

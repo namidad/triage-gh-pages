@@ -94,10 +94,13 @@ export class TriageVictim extends Component {
                         }
                     })
                 } else {
-                    this.setState({
+                    let label = [...this.state.data.labels];
+                    label.shift();
+                    label.push(pulse.length.toString());
+                    this.setState({ 
                     
                         data: {
-                            labels: [...this.state.data.labels,pulse.length.toString()],
+                            labels: label,
                             datasets:[{
                                 label: "Pulse",
                                 borderColor: 'rgba(214,69,65,0.755)',
@@ -146,7 +149,8 @@ export class TriageVictim extends Component {
       if(this.state.victim){
         return (
             <div className={'victimDetailed'}>
-                <div className={'victimContainer'}>
+                <div className={'raports'}>
+                <div className={'victimC    ontainer'}>
                     <div className='victimLine'>
                         <Line 
                             options={{
@@ -169,7 +173,7 @@ export class TriageVictim extends Component {
                                         },
                                         scaleLabel: {
                                             display: true,
-                                            labelString: 'Czas[s]'
+                                            labelString: 'Time[s]'
                                         }
                                     }],
                                 }
@@ -199,7 +203,7 @@ export class TriageVictim extends Component {
                                         },
                                         scaleLabel: {
                                             display: true,
-                                            labelString: 'Czas[s]'
+                                            labelString: 'Time[s]'
                                         }
                                     }],
                                 }
@@ -229,7 +233,7 @@ export class TriageVictim extends Component {
                                         },
                                         scaleLabel: {
                                             display: true,
-                                            labelString: 'Czas[s]'
+                                            labelString: 'Time[s]'
                                         }
                                     }],
                                 }
@@ -237,14 +241,23 @@ export class TriageVictim extends Component {
                             data={this.state.data2}
                         />
                     </div>
-                    <div className="victimLine victimDetailed">
-                        <h3>Victim ID: {this.state.victim.victimID}</h3>
-                        <h4>Priority: {this.state.victim.currentPriority}</h4>
-                        <h4>Latitude: {this.state.victim.reports[this.state.victim.reports.length-1].latitude}</h4>
-                        <h4>Longitude: {this.state.victim.reports[this.state.victim.reports.length-1].longitude}</h4>
-                        <h4>State: {this.state.victim.state}</h4>
-                    </div>
                 </div>
+                <div className="victimLine victimDetailed">
+                        <h3>{this.state.victim.victimID} - Victim ID</h3>
+                        <h4>{this.state.victim.reports[this.state.victim.reports.length-1].rescuerID} - Rescuer ID</h4>
+                        <h4>{this.state.victim.currentPriority} - Priority</h4>
+                        <h4>{this.state.victim.reports[this.state.victim.reports.length-1].sensorData.pulse} - Pulse</h4>
+                        <h4>{this.state.victim.reports[this.state.victim.reports.length-1].sensorData.saturation} - Saturation</h4>
+                        <h4>{this.state.victim.reports[this.state.victim.reports.length-1].sensorData.breathPerMinute} - Breath per minute</h4>
+                        <h4>{this.state.victim.reports[this.state.victim.reports.length-1].latitude} - Latitude</h4>
+                        <h4>{this.state.victim.reports[this.state.victim.reports.length-1].longitude} - Longitude</h4>
+                        <h4>{this.state.victim.state} - State</h4>
+                    </div>
+
+                </div>
+                
+
+
                 <Button as={Link} to={'/triage-gh-pages/triage'}>Cofnij</Button>
                 
             </div>

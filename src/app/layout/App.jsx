@@ -12,19 +12,19 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/triage-gh-pages/' component={HomePage}/>
+          <Route exact path='/' component={HomePage}/>
         </Switch>
 
         <Route
-        path="/triage-gh-pages/(.+)"
+        path="/(.+)"
         render={() => (
           <div>
           <NavBar />
           <Container className="main">
             <Switch>
-              <Route path='/triage-gh-pages/triage' component={TriageDetailedPage}/>
-              <Route path='/triage-gh-pages/triage-method' component={TriageMethod}/>
-              <Route path='/triage-gh-pages/victim/:id' component={TriageVictim}/>
+              <Route path='/triage' component={TriageDetailedPage}/>
+              <Route path='/triage-method' component={TriageMethod}/>
+              <Route path='/victim/:id' component={TriageVictim}/>
             </Switch>
           </Container>
           </div>

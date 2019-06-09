@@ -32,7 +32,7 @@ class HomePage extends Component {
             this.setState({
               error:false,
             })
-          this.props.history.push('/triage-gh-pages/triage-method');
+          this.props.history.push('/triage-method');
         } else {
           this.setState({
             error:true,
@@ -93,8 +93,8 @@ class HomePage extends Component {
 
 
           {this.state.error && <Message negative>
-            <Message.Header>Blad logowania</Message.Header>
-            <p>Bledny login lub haslo. Sprobuj ponownie!</p>
+            <Message.Header>Login error!</Message.Header>
+            <p>Invalid login or password. Try again!</p>
           </Message> }
 
         </Grid.Column>
@@ -105,7 +105,7 @@ class HomePage extends Component {
       )
     } else
       {
-      this.props.history.push('/triage-gh-pages/triage-method');
+      this.props.history.push('/triage-method');
       return null;
     }
     }

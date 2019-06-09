@@ -36,7 +36,7 @@ export class TriageDashboard extends Component {
   }
 
   handleChangeId=(e)=>{
-    const path = '/triage-gh-pages/victim/'+e._id;
+    const path = '/victim/'+e._id;
     this.props.history.push(path);
   }
 

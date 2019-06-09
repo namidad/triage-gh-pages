@@ -1,11 +1,15 @@
 import React from 'react'
 import { Menu, Dropdown } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
-const SignedInMenu = ({signOut}) => {
 
+const SignedInMenu = ({goToMap}) => {
     return(
             <Menu.Item position="right">
-            <Dropdown.Item onClick={signOut} text="Sign Out" icon="power" />
+            <Menu.Item as={Link} to='/triage' header>
+                Go to map
+            </Menu.Item>
+            <Dropdown.Item text="Sign Out" icon="power" />
             </Menu.Item>
     )
 }

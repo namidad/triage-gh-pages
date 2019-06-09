@@ -37,7 +37,7 @@ export class TriageMethod extends Component {
         // });
         axios.post('http://localhost:4000/updateMethod', body).then((res)=>{
             if(res){
-                this.props.history.push('/triage-gh-pages/triage');
+                this.props.history.push('/triage');
             }
         });
     }
@@ -50,7 +50,7 @@ export class TriageMethod extends Component {
         }
         axios.post('http://localhost:4000/method', body).then((res)=>{
             if(res){
-                this.props.history.push('/triage-gh-pages/triage');
+                this.props.history.push('/triage');
             }
         });
     }
