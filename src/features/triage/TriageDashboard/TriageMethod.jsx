@@ -9,10 +9,33 @@ export class TriageMethod extends Component {
 
     handleStartClick = () =>{
         const body = {
-            id: '5ccda3fdf5c55d25a2abb295',
+            id: '5cfbc12ceef2bf0d2353bd3d',
+            victimsNum: 50,
+            rescuersNum: 10,
             isUsed: true,
         }
-        axios.post('http://localhost:4000/method', body).then((res)=>{
+
+        // const body = {    
+        // victimID: 1,
+        // rescuerID: 't1',
+        // teamID: 't1',
+        // deviceName: 't1',
+        // timestamp: 123123,
+        // priority: 'blue',
+        // pulse: 90,
+        // saturation: 20,
+        // breathPerMinute: 30,
+        // latitude: 44.4,
+        // longitude: 333.3,
+        // comment: 'asdaasd'
+        // }
+    
+        // axios.post('http://localhost:4000/addSensorDataToVictim', body).then((res)=>{
+        //     if(res){
+        //         this.props.history.push('/triage-gh-pages/triage');
+        //     }
+        // });
+        axios.post('http://localhost:4000/updateMethod', body).then((res)=>{
             if(res){
                 this.props.history.push('/triage-gh-pages/triage');
             }
@@ -20,7 +43,9 @@ export class TriageMethod extends Component {
     }
     handleJumpStartClick = () => {
         const body = {
-            id: '5ccda3fdf5c55d25a2abb296',
+            id: '5cfbc14811bb070d69aca60d',
+            victimsNum: 100,
+            rescuersNum: 10,
             isUsed: true,
         }
         axios.post('http://localhost:4000/method', body).then((res)=>{

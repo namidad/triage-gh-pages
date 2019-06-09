@@ -19,16 +19,22 @@ export class TriageDashboard extends Component {
   }
 
   componentWillMount(){
-    axios.get('http://localhost:4000/getVictims')
+    this.inter = setInterval(()=>{
+      axios.get('http://localhost:4000/getVictims')
       .then(res=>{
         for(let i=0; i<res.data.length;i++){
-          res.data[i]._id=i;
+          //res.data[i]._id=i;
         }
         this.props.addVictims(res.data);
         this.setState({
           victims: res.data,
         })
       }).catch(err=>console.log(err));
+    },1000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.inter);
   }
 
   handleChangeId=(e)=>{
@@ -54,27 +60,31 @@ export class TriageDashboard extends Component {
   }
 
   render() {
-    let markers = this.state.victims.map(vic=>{
-      if(vic.color==="green"){
-        if(this.state.green){
-          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
+    console.log(this.state.victims)
+    let markers=null;
+    if(this.state.victims.length>0){
+       markers = this.state.victims.map(vic=>{
+        if(vic.currentPriority.toLowerCase()==="green"){
+          if(this.state.green){
+            return <CustomMarker color={vic.currentPriority.toLowerCase()} key={vic._id} lat={vic.reports[vic.reports.length-1].latitude} lng={vic.reports[vic.reports.length-1].longitude}  _id={vic._id} onClick={this.handleChangeId}/>
+          }
+        } else if (vic.currentPriority.toLowerCase()==="red"){
+          if(this.state.red){
+            return <CustomMarker color={vic.currentPriority.toLowerCase()} key={vic._id} lat={vic.reports[vic.reports.length-1].latitude} lng={vic.reports[vic.reports.length-1].longitude}  _id={vic._id} onClick={this.handleChangeId}/>
+          }
+        } else if (vic.currentPriority.toLowerCase()==="black") {
+          if(this.state.black){
+            return <CustomMarker color={vic.currentPriority.toLowerCase()} key={vic._id} lat={vic.reports[vic.reports.length-1].latitude} lng={vic.reports[vic.reports.length-1].longitude}  _id={vic._id} onClick={this.handleChangeId}/>
+          }
+        } else if (vic.currentPriority.toLowerCase()==="yellow") {
+          if(this.state.yellow){
+            return <CustomMarker color={vic.currentPriority.toLowerCase()} key={vic._id} lat={vic.reports[vic.reports.length-1].latitude} lng={vic.reports[vic.reports.length-1].longitude}  _id={vic._id} onClick={this.handleChangeId}/>
+          }
         }
-      } else if (vic.color==="red"){
-        if(this.state.red){
-          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
-        }
-      } else if (vic.color==="black") {
-        if(this.state.black){
-          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
-        }
-      } else if (vic.color==="yellow") {
-        if(this.state.yellow){
-          return <CustomMarker color={vic.color} key={vic._id} lat={vic.lat} lng={vic.lng}  _id={vic._id} onClick={this.handleChangeId}/>
-        }
-      }
-
-      return null;
-    })
+        return null;
+      })
+    }
+    
 
     if(this.props.logged){
       return (

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const victimSchema = mongoose.Schema({
+const rescuerSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    currentPriority: String,
-    state: String,
-    victimID: Number,
+    rescuerID: String,
+    teamID: String,
+    deviceName: String,
     reports: [{
         timestamp: Number,
         rescuerID : String,
@@ -18,13 +18,7 @@ const victimSchema = mongoose.Schema({
         latitude: Number,
         longitude: Number,
         comment: String
-    }],
-    sensorReads : [{
-        timestamp: Number,
-        pulse: Number,
-        saturation: Number,
-        breathPerMinute: Number
     }]
 });
 
-module.exports = mongoose.model('Victim', victimSchema);
+module.exports = mongoose.model('Rescuer', rescuerSchema);
