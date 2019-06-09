@@ -135,6 +135,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 .victimContainer {
@@ -151,6 +153,7 @@ body {
   width: 60%;
   height: 80%;
   min-width: 500px;
+  padding-bottom: 25px;
 }
 
 .injuredForm {

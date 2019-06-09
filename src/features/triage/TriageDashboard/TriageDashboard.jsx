@@ -22,9 +22,11 @@ export class TriageDashboard extends Component {
     this.inter = setInterval(()=>{
       axios.get('http://localhost:4000/getVictims')
       .then(res=>{
-        this.setState({
-          victims: res.data,
-        })
+        if(res.data !== this.state.victims){
+          this.setState({
+            victims: res.data,
+          })
+        }
       }).catch(err=>console.log(err));
     },1000);
   }
@@ -82,7 +84,7 @@ export class TriageDashboard extends Component {
     
 
     if(this.props.logged && this.state.victims.length>0){
-      let latitude=0,longitude=0, counter=0;;
+      let latitude=0,longitude=0;
       for(let i = 0;i<this.state.victims.length;i++){
           latitude += this.state.victims[i].reports[this.state.victims[i].reports.length-1].latitude;
           longitude +=this.state.victims[i].reports[this.state.victims[i].reports.length-1].longitude;
