@@ -15,17 +15,13 @@ export class TriageDashboard extends Component {
     yellow: true,
     red: true,
     black: true,
-    victims: this.props.victims,
+    victims: [],
   }
 
   componentWillMount(){
     this.inter = setInterval(()=>{
       axios.get('http://localhost:4000/getVictims')
       .then(res=>{
-        for(let i=0; i<res.data.length;i++){
-          //res.data[i]._id=i;
-        }
-        this.props.addVictims(res.data);
         this.setState({
           victims: res.data,
         })
@@ -60,7 +56,6 @@ export class TriageDashboard extends Component {
   }
 
   render() {
-    console.log(this.state.victims)
     let markers=null;
     if(this.state.victims.length>0){
        markers = this.state.victims.map(vic=>{
@@ -86,7 +81,14 @@ export class TriageDashboard extends Component {
     }
     
 
-    if(this.props.logged){
+    if(this.props.logged && this.state.victims.length>0){
+      let latitude=0,longitude=0, counter=0;;
+      for(let i = 0;i<this.state.victims.length;i++){
+          latitude += this.state.victims[i].reports[this.state.victims[i].reports.length-1].latitude;
+          longitude +=this.state.victims[i].reports[this.state.victims[i].reports.length-1].longitude;
+      }
+      latitude=latitude/this.state.victims.length;
+      longitude=longitude/this.state.victims.length;
       return (
         <div className="mapContainer">
         <div>
@@ -103,8 +105,8 @@ export class TriageDashboard extends Component {
                 styles={mapStyles}
 
                 initialCenter={{
-                  lat: 51.109000,
-                  lng: 17.032737
+                  lat: latitude,
+                  lng: longitude
                 }}
                 zoom={18}
               >
@@ -115,6 +117,8 @@ export class TriageDashboard extends Component {
         </div>
 
       )
+    } else if(this.props.logged){
+      return null
     }
 
   }
